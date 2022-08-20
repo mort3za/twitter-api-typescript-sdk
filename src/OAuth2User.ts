@@ -88,7 +88,7 @@ interface GetTokenResponse {
   scope?: string;
 }
 
-interface Token extends Omit<GetTokenResponse, 'expires_in'> {
+interface Token extends Omit<GetTokenResponse, "expires_in"> {
   /** Date that the access_token will expire at.  */
   expires_at?: Date;
 }
@@ -111,8 +111,9 @@ export class OAuth2User implements AuthClient {
   #options: OAuth2UserOptions;
   #code_verifier?: string;
   #code_challenge?: string;
-  constructor(options: OAuth2UserOptions) {
+  constructor(options: OAuth2UserOptions, code_verifier?: string) {
     this.#options = options;
+    this.#code_verifier = code_verifier;
   }
 
   /**
